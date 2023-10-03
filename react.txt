@@ -1,0 +1,101 @@
+       REACT (Front End Technology)
+---------------------------------------------
+   Basic Commands
+----------------------------
+1. to create react app : npx create-react-app project-name
+2. to run react app : npm start
+3. to install axios: npm i axios
+4. to install react-router-dom: npm i react-router-dom
+Features and Concepts
+---------------------
+1. Used to build UI with the help of JS libraries.
+2. Used to built single page applications.
+3. Declarative : 
+4. Immutable & Mutable
+5. Pure functions : It wont cause side effects.
+6. Virtual DOM
+7. Unidirectional Data Flow : parent to child
+8. JSX - (Javascript XML) 
+       - Every jsx expression should be placed in a single tag
+       - React fragments : <> </>
+       - Instead of attribute class use className
+       - Instead of attribute for use htmlFor
+       - to display js expression in jsx place js expression inside a  {}
+       - every tag must  have its closing tag,
+       - tag without content - self closing tag
+9. Transpiling : converting JSX to (HTML,CSS,JS) - babel Library
+10. to create react app - create-react-app command
+11. React App consist of one or more components : A tree structure of components with starting component - App component
+12. Component : Is a small part of UI,return HTML
+    - is js file with filename starting with a capital letter
+    - Different components in react
+        - Functional/stateless components
+        - Class based/stateful components
+13. Props : used to share data from parent to child
+    - its an object
+    - child component can access shared data via  props from its argument
+14. Styling Component using CSS
+    - inline CSS
+    - external styling sheet
+    - CSS module: a file with extension as .module.css
+15. React Events Handling
+    - without argument : event bind using its function name only
+    - with argument : event bind using arrow function
+    - with even object : event bind using arrow function with event object
+16. Conditional Rendering
+    - if statements : && operator
+    - if-else statements : Ternary ?: operator
+17. React State: 
+    - predefined object to store property of a class based component
+    - when state changes then component re-Render
+    - to change value of state - use setState(value)
+18. React Component Lifecycle
+    - Mounting phase : putting all elements into DOM
+          - constructor()
+          - getDerivedStateFromProps()
+          - render()
+          - componentDidMount()
+    - Updating phase : while updating component
+          - getDerivedStateFromProps()
+          - shouldComponentUpdate()
+          - render()
+          - getSnapshotBeforeUpdate()
+          - componentDidUpdate()
+    - Unmounting phase : Removing component from DOM
+          - componentWillUnmount()
+19. React Hooks : provide react features like state and Lifecycle etc to Functional Component
+    - Import hook from react to Functional component by calling hook
+    - Hook can only called at top level of component
+    - Hook cannot be Conditional
+    - Types of Hooks
+        - Predefined Hooks
+           - useState(initial-value) : return state and function to updating state
+        - Custom Hooks
+20. Rendering List (Array of List) : use map method
+21. React Forms : handled by component
+        - preventDefault() : method to cancel the event if its possible
+        - Types of component
+            - Controlled components : managed by react component
+            - Uncontrolled components : managed by DOM
+22. API Call - React
+    - Using Axios Library: Promise based HTTP client for the browser and node.js
+    - Creating an instance: using create method in Axios
+23. Routing / set up path for componentin React
+    - Use react-router-dom Library
+        - entire app should be inside BrowserRouter
+        -
+
+
+---------------React applications----------------------
+
+1. Simple Interest Calculator App
+    - React Component
+    - React Hook
+    - React Form
+    - Conditional Rendering
+    - React Events
+    - User input Validation
+2. Netflix Clone
+    - React Component
+    - React Hook: useState, useEffect
+    - Api call uaing axios
