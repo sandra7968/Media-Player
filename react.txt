@@ -6,6 +6,9 @@
 2. to run react app : npm start
 3. to install axios: npm i axios
 4. to install react-router-dom: npm i react-router-dom
+5. to install react bootstrap: npm install react-bootstrap bootstrap
+        - Import bootstrap theme from https://bootswatch.com/ (bootstrap.min.css) to index.js file
+
 Features and Concepts
 ---------------------
 1. Used to build UI with the help of JS libraries.
@@ -70,6 +73,13 @@ Features and Concepts
     - Types of Hooks
         - Predefined Hooks
            - useState(initial-value) : return state and function to updating state
+           - useEffect(<function>,<dependancy>) : Hook allows you to perform side effects in your components
+             - useEffect runs on every render
+             - Based on dependancy we can control side effect
+                 - No dependancy passed: Runs on every render
+                 - An empty array: Runs only on the first render
+                 - Props or state value: Runs on the first render, and any time any dependancy valye changes
+           - useNavigate() : used to redirect from one page to another, return a method for changing the location
         - Custom Hooks
 20. Rendering List (Array of List) : use map method
 21. React Forms : handled by component
@@ -83,7 +93,10 @@ Features and Concepts
 23. Routing / set up path for componentin React
     - Use react-router-dom Library
         - entire app should be inside BrowserRouter
-        -
+        - wrap all components which needed to be set up path inside Routes
+        - to set up path for component use Route
+    - Link : used to redirect from one page to another
+     useNavigate Hook : redirection
 
 
 ---------------React applications----------------------
@@ -99,3 +112,6 @@ Features and Concepts
     - React Component
     - React Hook: useState, useEffect
     - Api call uaing axios
+3. Media Player
+    - React Routing
+    - React 
