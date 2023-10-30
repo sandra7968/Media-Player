@@ -24,3 +24,15 @@ export const deleteAVideo = async (id)=>{
     // make delete http request to http://localhost:4000/videos/id to remove a video from json server and return response to VideoCard component
     return await commonAPI("DELETE",`${serverURL}/videos/${id}`,{})
 }
+
+// store watching video history to json server
+export const addToHistory = async (videoDetails)=>{
+    // make call post http request to http://localhost:4000/history to add video history in json server and return response to video card component
+  return await commonAPI("POST", `${serverURL}/history`,videoDetails)
+}
+
+// get all watching video history to json server
+export const getAllHistory = async ()=>{
+    // make get post http request to http://localhost:4000/history to get video history in json server and return response to watch history component
+  return await commonAPI("GET", `${serverURL}/history`,"")
+}

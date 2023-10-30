@@ -13,6 +13,7 @@ function View({uploadVideoServerResponse}) {
   }
   useEffect(()=>{
     getAllUploadedVideos()
+    setDeleteVideoStatus(false)
   },[uploadVideoServerResponse,deleteVideoStatus])
 
   return (
