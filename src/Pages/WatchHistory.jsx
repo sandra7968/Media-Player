@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { getAllHistory } from '../services/allAPI'
 
 function WatchHistory() {
+ 
   return (
     <>
       <div className='container mt-5 mb-5 d-flex justify-content-between'>
