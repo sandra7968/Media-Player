@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getAllHistory } from '../services/allAPI'
 
 function WatchHistory() {
- 
+  const [history,setHistory] = useState([])
+  const handleHistory = async ()=>{
+    // make api call
+    const {data} = await getAllHistory()
+    setHistory(data);
+  }
+
+  useEffect(()=>{
+    handleHistory()
+  },[])
   return (
     <>
       <div className='container mt-5 mb-5 d-flex justify-content-between'>
@@ -20,12 +29,16 @@ function WatchHistory() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
+          {
+            history?history?.map((item,index)=>(
+            <tr key={index}>
+            <td>{index+1}</td>
+            <td>{item?.caption}</td>
+            <td><a href={item?.embedLink} target='_blank'>{item?.embedLink}</a></td>
+            <td>{item?.timeStamp}</td>
+          </tr>)):
+          <p className='fw-bolder fs-5 text-danger'>Nothing to display!</p>
+          }
         </tbody>
       </table>
     </>

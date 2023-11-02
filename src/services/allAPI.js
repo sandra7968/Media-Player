@@ -36,3 +36,20 @@ export const getAllHistory = async ()=>{
     // make get post http request to http://localhost:4000/history to get video history in json server and return response to watch history component
   return await commonAPI("GET", `${serverURL}/history`,"")
 }
+
+// add a category to json server
+export const addCategory = async (reqBody)=>{
+    // make post http request to http://localhost:4000/categories to add category in json server and return response to Category component
+   return await commonAPI("POST", `${serverURL}/categories`,reqBody)
+}
+
+// get all category from json server
+export const getAllCategory = async ()=>{
+    // make get http request to http://localhost:4000/categories to get all category from json server and return response to Category component
+   return await commonAPI("GET", `${serverURL}/categories`,"")
+}
+// remove a category from json server
+export const deleteCategory = async (id)=>{
+    // make delete http request to http://localhost:4000/categories/id to delete particular category from json server and return response to Category component
+   return await commonAPI("DELETE", `${serverURL}/categories/${id}`,{})
+}
