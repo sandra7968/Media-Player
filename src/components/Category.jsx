@@ -13,7 +13,7 @@ function Category() {
   const handleAddCategory = async ()=>{
     if(categoryName){
       let body={
-        categoryName
+        categoryName,allVideos:[]
       }
       // make api call
       const response = await addCategory(body)
@@ -43,20 +43,22 @@ function Category() {
     getCategories()
   },[])
 
+  
+
   return (
     <>
     <div className="d-grid ms-3">
       <button onClick={handleShow} className="btn btn-primary">Add New Category</button>
     </div>
     {
-      allCategories?allCategories?.map(item=>(
+      allCategories.length>0?allCategories?.map(item=>(
         <div className="mt-3 ms-3 border rounded p-3">
           <div className="d-flex justify-content-between align-items-center">
             <h6>{item?.categoryName}</h6>
             <button className='btn'><i className='fa-solid fa-trash text-danger'></i></button>
           </div>
         </div>
-      )): <p className="fw-bolder fs-5 text-danger">No Categories Added!</p>
+      )): <p className="fw-bolder fs-5 ms-3 mt-3 text-danger">No Categories Added!</p>
     }
 
     <Modal
