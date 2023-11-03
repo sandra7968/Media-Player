@@ -36,6 +36,11 @@ export const getAllHistory = async ()=>{
     // make get post http request to http://localhost:4000/history to get video history in json server and return response to watch history component
   return await commonAPI("GET", `${serverURL}/history`,"")
 }
+// delete  watching video history to json server
+export const deleteHistory = async (id)=>{
+    // make delete http request to http://localhost:4000/history/id to delete video history from json server and return response to watch history component
+  return await commonAPI("DELETE", `${serverURL}/history/${id}`,{})
+}
 
 // add a category to json server
 export const addCategory = async (reqBody)=>{

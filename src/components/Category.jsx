@@ -76,7 +76,7 @@ function Category() {
       <button onClick={handleShow} className="btn btn-primary">Add New Category</button>
     </div>
     {
-      allCategories.length>0?allCategories?.map(item=>(
+      allCategories?.length>0?allCategories?.map(item=>(
         <div className="mt-3 ms-3 border rounded p-3" droppable onDragOver={(e)=>dragOver(e)} onDrop={(e)=>videoDrop(e,item?.id)}>
           <div className="d-flex justify-content-between align-items-center">
             <h6>{item?.categoryName}</h6>
@@ -87,7 +87,7 @@ function Category() {
               item?.allVideos &&
              item?.allVideos.map(card=>(
               <Col sm={12}>
-              <VideoCard displayData = {card}/>
+              <VideoCard displayData = {card} insideCategory={true}/>
               </Col>
              ))
             }
