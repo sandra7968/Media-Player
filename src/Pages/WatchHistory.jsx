@@ -8,6 +8,7 @@ function WatchHistory() {
     // make api call
     const {data} = await getAllHistory()
     setHistory(data);
+    
   }
 
   useEffect(()=>{
@@ -38,7 +39,8 @@ function WatchHistory() {
         </thead>
         <tbody>
           {
-            history.length>0?history?.map((item,index)=>(
+            history?.length>0?
+            history?.map((item,index)=>(
             <tr key={index}>
             <td>{index+1}</td>
             <td>{item?.caption}</td>
