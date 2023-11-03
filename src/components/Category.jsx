@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react'
 import { Modal,Button,Form } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { addCategory,getAllCategory } from '../services/allAPI';
+import { addCategory,deleteCategory,getAllCategory } from '../services/allAPI';
 function Category() {
   const [allCategories,setAllCategories] = useState("")
   const [categoryName,setCategoryName] = useState("")
@@ -43,7 +43,10 @@ function Category() {
     getCategories()
   },[])
 
-  
+  const handleDelete = async (id)=>{
+    await deleteCategory(id)
+    getCategories()
+  }
 
   return (
     <>
@@ -55,7 +58,7 @@ function Category() {
         <div className="mt-3 ms-3 border rounded p-3">
           <div className="d-flex justify-content-between align-items-center">
             <h6>{item?.categoryName}</h6>
-            <button className='btn'><i className='fa-solid fa-trash text-danger'></i></button>
+            <button onClick={()=>handleDelete(item?.id)} className='btn'><i className='fa-solid fa-trash text-danger'></i></button>
           </div>
         </div>
       )): <p className="fw-bolder fs-5 ms-3 mt-3 text-danger">No Categories Added!</p>
