@@ -1,8 +1,9 @@
 import React,{useEffect, useState} from 'react'
-import { Modal,Button,Form } from 'react-bootstrap';
+import { Modal,Button,Form, Row, Col } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { addCategory,deleteCategory,getAllCategory } from '../services/allAPI';
+import { addCategory,deleteCategory,getAVideo,getAllCategory, updateCategory } from '../services/allAPI';
+import VideoCard from './VideoCard';
 function Category() {
   const [allCategories,setAllCategories] = useState("")
   const [categoryName,setCategoryName] = useState("")
@@ -48,6 +49,27 @@ function Category() {
     getCategories()
   }
 
+  const videoDrop = async (e,categoryId)=>{
+    // console.log("Video dropped inside category id: "+categoryId);
+    const videoId = e.dataTransfer.getData("videoId")
+    // console.log("Video Card ID: ",videoId);
+    // get video details
+    const {data} = await getAVideo(videoId)
+    // console.log(data);
+    // get category details
+    const selectedCategory = allCategories?.find(item=>item.id===categoryId)
+    selectedCategory.allVideos.push(data)
+    console.log(selectedCategory);
+    // make api call to update category
+    await updateCategory(categoryId,selectedCategory)
+    getCategories()
+  }
+
+  const dragOver = (e)=>{
+    console.log("Video dragged over Category");
+    e.preventDefault()
+  }
+
   return (
     <>
     <div className="d-grid ms-3">
@@ -55,11 +77,21 @@ function Category() {
     </div>
     {
       allCategories.length>0?allCategories?.map(item=>(
-        <div className="mt-3 ms-3 border rounded p-3">
+        <div className="mt-3 ms-3 border rounded p-3" droppable onDragOver={(e)=>dragOver(e)} onDrop={(e)=>videoDrop(e,item?.id)}>
           <div className="d-flex justify-content-between align-items-center">
             <h6>{item?.categoryName}</h6>
             <button onClick={()=>handleDelete(item?.id)} className='btn'><i className='fa-solid fa-trash text-danger'></i></button>
           </div>
+         <Row>
+            {
+              item?.allVideos &&
+             item?.allVideos.map(card=>(
+              <Col sm={12}>
+              <VideoCard displayData = {card}/>
+              </Col>
+             ))
+            }
+         </Row>
         </div>
       )): <p className="fw-bolder fs-5 ms-3 mt-3 text-danger">No Categories Added!</p>
     }

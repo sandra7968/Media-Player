@@ -24,11 +24,15 @@ function VideoCard({displayData, setDeleteVideoStatus}) {
     setDeleteVideoStatus(true)
   }
 
+  const dragStarted = (e,id)=>{
+    console.log("Drag started..video Id: "+id);
+    e.dataTransfer.setData("videoId",id)
+  }
+
   return (
     <>
-   {
-   displayData &&
-   <Card className='mb-3'>
+ 
+   <Card className='mb-3' draggable onDragStart={(e)=>dragStarted(e,displayData?.id)}>
       <Card.Img onClick={handleShow} height={'180px'} variant="top" src={displayData?.url} />
       <Card.Body>
         <Card.Title className='d-flex justify-content-between align-items-center'>
@@ -36,7 +40,7 @@ function VideoCard({displayData, setDeleteVideoStatus}) {
           <button onClick={()=>removeVideo(displayData?.id)} className='btn'><i className='fa-solid fa-trash text-danger'></i></button>
         </Card.Title>
       </Card.Body>
-    </Card>}
+    </Card>
     
     <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

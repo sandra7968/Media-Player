@@ -53,3 +53,8 @@ export const deleteCategory = async (id)=>{
     // make delete http request to http://localhost:4000/categories/id to delete particular category from json server and return response to Category component
    return await commonAPI("DELETE", `${serverURL}/categories/${id}`,{})
 }
+// update a category from json server
+export const updateCategory = async (id,body)=>{
+    // make put http request to http://localhost:4000/categories/id to update particular category from json server and return response to Category component
+   return await commonAPI("PUT", `${serverURL}/categories/${id}`,body)
+}
